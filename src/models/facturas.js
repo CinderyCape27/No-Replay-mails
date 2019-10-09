@@ -1,6 +1,5 @@
 // Models Settings
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema();
+const { Schema, model } = require('mongoose');
 
 const facturaSchema = ({
     name: {type: String, required: true},
