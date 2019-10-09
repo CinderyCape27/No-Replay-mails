@@ -4,8 +4,10 @@ const router =  express.Router();
 
 
 
-router.post('/send-mail', (req, res) => {
-    res.send('Hello');
+router.post('/send-email', (req, res) => {
+    console.log(req.body);
+    res.redirect('/sent.html');
+    
 });
 
 
