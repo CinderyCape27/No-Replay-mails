@@ -10,15 +10,18 @@ const Factura = require('../models/facturas');
 router.post('/send-email', async (req, res) => {
     // console.log(req.files[0].filename);
     const { name, email, message } = req.body;
-    console.log(req.files[0]);
+    // console.log(req.files[0].filename);
     
-    const filePath = `${req.files[0].filename}`
+    const filePath = `${req.files[0].filename }`
+    const filePath2 = `${req.files[1].filename }`
+
     console.log(filePath);
+    console.log(filePath2);
     
     
 
     const newFact = new Factura({ name, email, message, filePath});
-    console.log(newFact);
+    // console.log(newFact);
 
     await newFact.save()
     
@@ -56,13 +59,17 @@ router.post('/send-email', async (req, res) => {
         attachments: [
             {
                 filename: `${filePath}`,
-                path: path.join(__dirname, `../public/uploads/${req.files[0].filename }`)
+                path: path.join(__dirname, `../public/uploads/${req.files[0].filename }`),
+            },
+            {
+                filename: `${filePath2}`,
+                path: path.join(__dirname, `../public/uploads/${req.files[1].filename }`)
             }
         ]
     });
     console.log('Message sent', info.messageId);
     res.redirect('/sent.html');
-});
+}); /* Stop Ctrl+z  here it works*/
 
 
 
